@@ -28,12 +28,12 @@ html, body{
     flex-direction: column;
     background-color: black;
     padding: 15px;
-    padding-top: 20px;
     min-width: 370px;
     max-width: 370px;
-    max-height: 100%;
+    max-height: 800vh;
     border-radius: 15px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.477);
+
 }
 
 .buttons{
@@ -43,7 +43,7 @@ html, body{
 }
 
 .item{
-    height: 100px;
+    height: 70px;
     font-size: 50px;
     border-radius: 50%;
     margin: 3px;
