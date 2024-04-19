@@ -1,21 +1,28 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-html, body{
+html, body {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;    
 }
 
-.total{
+.display {
     background-color: #fff2dae6;
-    text-align: end;
-    font-size: 100px;
+    font-size: 3rem;
+    height: 120%;
+    min-height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    overflow-x: auto;
+    line-height: 1.2;
     margin: 10px;
     margin-right: 20px;
     padding-right: 20px;
@@ -23,8 +30,14 @@ html, body{
     box-shadow: 0px 0px 12px white;
 }
 
-.container{
+.operation {
+    
+}
+
+.container {
     display: flex;
+    width: 320px;
+    padding: 15px;
     flex-direction: column;
     background-color: black;
     padding: 15px;
@@ -33,44 +46,42 @@ html, body{
     max-height: 800vh;
     border-radius: 15px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.477);
-
 }
 
-.buttons{
+.buttons {
     margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
 
-.item{
+.item {
     height: 70px;
     font-size: 50px;
     border-radius: 50%;
     margin: 3px;
 }
 
-.item:hover{
+.item:hover {
     background-color: #fff2dae6;
     box-shadow: 0px 0px 11px rgb(255, 255, 255);
     transition: .5s;
 }
 
-.item-grey{
+.item-grey {
     background-color: grey;
     bottom: 0;
 }
 
-.item-orange{
+.item-orange {
     background-color: #ff8431;
     border: 0;
 }
 
-.item-darkgrey{
+.item-darkgrey {
     background-color: darkgrey;
 }
 
-.equals{
-    
+.equals {
     border-radius: 15px;
     grid-column: span 2;
 }
