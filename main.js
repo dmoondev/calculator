@@ -1,7 +1,6 @@
 let operation = ""; 
 let result = ""; 
 let por1 = "", por2 = "", valuePrev = 0;
-let afterEquals = false;
 
 
 const operationDisplay = document.querySelector('.operation');
@@ -9,14 +8,14 @@ const resultDisplay = document.querySelector('.total');
 
 document.querySelectorAll('.item').forEach(item => {
     item.addEventListener('click', () => {
-        if(valuePrev !== '='){
+        if(item.textContent !== '='){
+            if(valuePrev === '='){
+                clearOperation();
+            }
             addToOperation(item.textContent);
             calculateResult();
-            valuePrev = item.textContent;
         }
-        else {
-            
-        }
+        valuePrev = item.textContent;
     });
 });
 
@@ -37,10 +36,7 @@ function addToOperation(value) {
         operation += value;
     } else if (value === '%'){
         operation = calculaPorcentaje(operation, por1, por2);
-    } /* else {
-        equalsOperation();
-    } */
-
+    }
     operationDisplay.textContent = operation;
 }
 
@@ -74,12 +70,13 @@ function calculateResult() {
 function clearOperation() {
     operation = "";
     result = "";
+    resultDisplay.style.fontWeight = "normal";
     operationDisplay.textContent = "0";
     resultDisplay.textContent = "0";
 }
 
 function equalsOperation(){
-    operation += '=';
+    operation = operation + " ="
     operationDisplay.textContent = operation;
     resultDisplay.style.fontWeight = "bold";
     resultDisplay.textContent = result;
