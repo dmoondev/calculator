@@ -1,19 +1,59 @@
 let operation = ""; 
 let result = ""; 
-let por1 = "", por2 = "", valuePrev = 0;
+let por1 = "", por2 = "", valuePrev = 0, activateEquals = false;
 
 
 const operationDisplay = document.querySelector('.operation');
 const resultDisplay = document.querySelector('.total');
 
-document.querySelectorAll('.item').forEach(item => {
+/* document.querySelectorAll('.item').forEach(item => {
     item.addEventListener('click', () => {
         if(item.textContent !== '='){
             if(valuePrev === '='){
-                clearOperation();
+                if(item.textContent !== '='){
+                    switch(item.textContent){
+
+                    }
+                }
+                else{
+                    clearOperation();
+                }
             }
-            addToOperation(item.textContent);
-            calculateResult();
+            else{
+                addToOperation(item.textContent);
+                calculateResult();
+            }
+        }
+        valuePrev = item.textContent;
+    });
+});
+ */
+
+document.querySelectorAll('.item').forEach(item => {
+    item.addEventListener('click', () => {
+        switch (item.textContent) {
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+            case '%':
+                updateOperation(item.textContent);
+                break;
+            case '=':
+                if(valuePrev !== '='){
+                   equalsOperation();
+                }
+                break;
+            case 'C':
+                clearOperation();
+                break;
+            default:
+                if (valuePrev === '=') {
+                    clearOperation();
+                }
+                addToOperation(item.textContent);
+                calculateResult();
+                break;
         }
         valuePrev = item.textContent;
     });
@@ -21,7 +61,7 @@ document.querySelectorAll('.item').forEach(item => {
 
 document.querySelector('#clear-button').addEventListener('click', clearOperation);
 
-document.querySelector('.equals').addEventListener('click', equalsOperation);
+//document.querySelector('.equals').addEventListener('click', equalsOperation);
 
 function addToOperation(value) {
     
@@ -59,9 +99,9 @@ function charDelete(del){
 function calculateResult() {
     try {
         result = eval(operation);
-        resultDisplay.textContent = result;
+        resultDisplay.textContent = "= " + result;
     } catch (error) {
-        result = "...";
+        result = "= ...";
         resultDisplay.textContent = result;
         console.error("Error al calcular:", error);
     }
@@ -73,6 +113,12 @@ function clearOperation() {
     resultDisplay.style.fontWeight = "normal";
     operationDisplay.textContent = "0";
     resultDisplay.textContent = "0";
+}
+
+function updateOperation(newValue){
+    operation = result + newValue;
+    operationDisplay.textContent = operation;
+    resultDisplay.style.fontWeight = "normal";
 }
 
 function equalsOperation(){
