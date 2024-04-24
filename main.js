@@ -6,29 +6,6 @@ let por1 = "", por2 = "", valuePrev = 0, activateEquals = false;
 const operationDisplay = document.querySelector('.operation');
 const resultDisplay = document.querySelector('.total');
 
-/* document.querySelectorAll('.item').forEach(item => {
-    item.addEventListener('click', () => {
-        if(item.textContent !== '='){
-            if(valuePrev === '='){
-                if(item.textContent !== '='){
-                    switch(item.textContent){
-
-                    }
-                }
-                else{
-                    clearOperation();
-                }
-            }
-            else{
-                addToOperation(item.textContent);
-                calculateResult();
-            }
-        }
-        valuePrev = item.textContent;
-    });
-});
- */
-
 document.querySelectorAll('.item').forEach(item => {
     item.addEventListener('click', () => {
         switch (item.textContent) {
@@ -47,6 +24,10 @@ document.querySelectorAll('.item').forEach(item => {
             case 'C':
                 clearOperation();
                 break;
+            case '+/-':
+                
+                changeSigne();
+                break;
             default:
                 if (valuePrev === '=') {
                     clearOperation();
@@ -60,8 +41,6 @@ document.querySelectorAll('.item').forEach(item => {
 });
 
 document.querySelector('#clear-button').addEventListener('click', clearOperation);
-
-//document.querySelector('.equals').addEventListener('click', equalsOperation);
 
 function addToOperation(value) {
     
@@ -126,4 +105,10 @@ function equalsOperation(){
     operationDisplay.textContent = operation;
     resultDisplay.style.fontWeight = "bold";
     resultDisplay.textContent = result;
+}
+
+function changeSigne(){
+    console.log("entre")
+    result = result * (-1);
+    resultDisplay.textContent = '= ' + result;
 }
